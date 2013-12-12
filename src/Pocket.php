@@ -4,7 +4,7 @@
  *
  * A PHP library for interfacing with Pocket (getpocket.com)
  *
- * @package	php-Pocket
+ * @package	pocket-api-php
  * @author	Dan Chen
  * @license	MIT License
  */
