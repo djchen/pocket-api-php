@@ -1,4 +1,4 @@
-pocket-api-php
+pocket-api-php [![License](https://img.shields.io/badge/license-MIT-blue.svg?style=flat)](LICENSE)
 ==========
 
 A PHP wrapper for interfacing with Pocket's API (getpocket.com)
