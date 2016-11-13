@@ -161,13 +161,6 @@ class Pocket {
 
 		$response = curl_exec($c);
 
-		$status = curl_getinfo($c, CURLINFO_HTTP_CODE);
-		if ($status != 200) {
-			if (isset(self::$_statusCodes[$status])) {
-				throw new PocketException('Error: ' . self::$_statusCodes[$status], $status);
-			}
-		}
-
 		if ($this->_config['debug'] === true) {
 			$headerSize = curl_getinfo($c, CURLINFO_HEADER_SIZE);
 			$header = substr($response, 0, $headerSize);
@@ -182,6 +175,14 @@ class Pocket {
 			echo "\n\nResponse Body:\n";
 			print_r($response);
 		}
+
+		$status = curl_getinfo($c, CURLINFO_HTTP_CODE);
+		if ($status != 200) {
+			if (isset(self::$_statusCodes[$status])) {
+				throw new PocketException('Error: ' . self::$_statusCodes[$status], $status);
+			}
+		}
+		
 		curl_close($c);
 
 		$result = json_decode($response, true);
