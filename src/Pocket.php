@@ -123,6 +123,21 @@ class Pocket {
 	}
 
 	/**
+	 * Sends a single event or multiple events(e.g. add, archive, delete) and actions that will modify the user's data in one call.
+	 * 
+	 * @param  array   $actions     List of actions
+	 * @param  boolean $accessToken The user's access token (optional)
+	 * 
+	 * @return array  Response from Pocket
+	 * @throws PocketException
+	 */
+	public function send($actions = array(), $accessToken = true) {
+		$params = array();
+		$params['actions'] = $actions;
+		return $this->_request('/send', $params, $accessToken);
+	}
+
+	/**
 	* Private method that makes the HTTP call to Pocket using cURL
 	*
 	* @return array Response from Pocket
